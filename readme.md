@@ -20,6 +20,8 @@ For installing all dependencies run
 
 
 ### Running locally
-
-run pytest in project root
+```
+Pytest
+```
+run on project root
 
