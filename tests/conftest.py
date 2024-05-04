@@ -1,7 +1,8 @@
 import pytest
-import security_event_client.security_event_client
+
+from security_event_client.security_event_client import SecurityEventClient
 
 
 @pytest.fixture(scope='module')
-def security_event_client_api() -> security_event_client.security_event_client.SecurityEventClient:
-    return security_event_client.security_event_client.SecurityEventClient()
+def security_event_client_api() -> SecurityEventClient:
+    return SecurityEventClient()

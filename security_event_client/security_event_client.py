@@ -1,7 +1,7 @@
 import common
 from common.http_wrapper.entities.http_method import Method
-from common.utils.retry import retry_on_server_error
-from . import response_entities
+from .response_entities.coro_custom_response import CoroCustomResponse
+from .response_entities.security_event_response import SecurityEventResponse
 
 
 class SecurityEventClient:
@@ -11,11 +11,10 @@ class SecurityEventClient:
         if not base_url:
             self.base_url = 'http://facebook.com'
 
-    def get_user_security_events(self, user_id: int | str) -> response_entities.coro_custom_response.CoroCustomResponse:
+    def get_user_security_events(self, user_id: int | str) -> CoroCustomResponse:
         url = f'{self.base_url}/security-events/{user_id}'
         response = self.http_client.send_request(
             url=url,
             method=Method.GET,
         )
-        return response_entities.coro_custom_response.CoroCustomResponse(response,
-                                                                         response_entities.security_event_response.SecurityEventResponse)
+        return CoroCustomResponse(response, SecurityEventResponse)

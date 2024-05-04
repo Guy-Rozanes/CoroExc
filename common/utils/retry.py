@@ -1,8 +1,6 @@
 import functools
 import time
 
-from security_event_client.response_entities.coro_custom_response import CoroCustomResponse
-
 # 404 status code is only for testing my retry
 STATUS_CODES_TO_RETRY = [500, 502, 503, 404]
 
